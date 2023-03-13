@@ -14,7 +14,7 @@ class DotaPicker:
         self.root.geometry("500x450")
         
         #список героев
-        self.heroes = ['abaddon', 'alchemist', 'ancient-apparition', 'arc-warden', 'axe', 'bane', 'batrider', 'beastmaster', 'bloodseeker', 'bounty-hunter', 'brewmaster', 'bristleback', 'broodmother', 'centaur-warrunner', 'chaos-knight', 'chen', 'clinkz', 'clockwerk', 'crystal-maiden', 'dark-seer', 'dark-willow', 'dawnbreaker', 'dazzle', 'death-prophet', 'disruptor', 'doom', 'dragon-knight', 'drow-ranger', 'earth-spirit', 'earthshaker', 'elder-titan', 'ember-spirit', 'enchantress', 'enigma', 'faceless-void', 'grimstroke', 'gyrocopter', 'hoodwink', 'huskar', 'invoker', 'io', 'jakiro', 'juggernaut', 'keeper-of-the-light', 'kunkka', 'leshrac', 'lich', 'lifestealer', 'lina', 'lion', 'lone-druid', 'luna', 'lycan', 'magnus', 'marci', 'mars', 'medusa', 'meepo', 'mirana', 'monkey-king', 'morphling', 'naga-siren', 'natures-prophet', 'necrophos', 'night-stalker', 'nyx-assassin', 'ogre-magi', 'omniknight', 'oracle', 'outworld-destroyer', 'pangolier', 'phantom-assassin', 'phantom-lancer', 'phoenix', 'puck', 'pudge', 'pugna', 'queen-of-pain', 'razor', 'riki', 'rubick', 'sand-king', 'shadow-demon', 'shadow-fiend', 'shadow-shaman', 'silencer', 'skywrath-mage', 'slardar', 'slark', 'snapfire', 'sniper', 'spectre', 'spirit-breaker', 'storm-spirit', 'sven', 'techies', 'templar-assassin', 'terrorblade', 'tidehunter', 'timbersaw', 'tiny', 'treant-protector', 'troll-warlord', 'tusk', 'underlord', 'undying', 'ursa', 'vengeful-spirit', 'void-spirit', 'venomancer', 'viper', 'visage', 'warlock', 'weaver', 'windranger', 'winter-wyvern', 'witch-doctor', 'wraith-king', 'zeus']
+        self.heroes = ['muerta', 'abaddon', 'alchemist', 'ancient-apparition', 'arc-warden', 'axe', 'bane', 'batrider', 'beastmaster', 'bloodseeker', 'bounty-hunter', 'brewmaster', 'bristleback', 'broodmother', 'centaur-warrunner', 'chaos-knight', 'chen', 'clinkz', 'clockwerk', 'crystal-maiden', 'dark-seer', 'dark-willow', 'dawnbreaker', 'dazzle', 'death-prophet', 'disruptor', 'doom', 'dragon-knight', 'drow-ranger', 'earth-spirit', 'earthshaker', 'elder-titan', 'ember-spirit', 'enchantress', 'enigma', 'faceless-void', 'grimstroke', 'gyrocopter', 'hoodwink', 'huskar', 'invoker', 'io', 'jakiro', 'juggernaut', 'keeper-of-the-light', 'kunkka', 'leshrac', 'lich', 'lifestealer', 'lina', 'lion', 'lone-druid', 'luna', 'lycan', 'magnus', 'marci', 'mars', 'medusa', 'meepo', 'mirana', 'monkey-king', 'morphling', 'naga-siren', 'natures-prophet', 'necrophos', 'night-stalker', 'nyx-assassin', 'ogre-magi', 'omniknight', 'oracle', 'outworld-destroyer', 'pangolier', 'phantom-assassin', 'phantom-lancer', 'phoenix', 'puck', 'pudge', 'pugna', 'queen-of-pain', 'razor', 'riki', 'rubick', 'sand-king', 'shadow-demon', 'shadow-fiend', 'shadow-shaman', 'silencer', 'skywrath-mage', 'slardar', 'slark', 'snapfire', 'sniper', 'spectre', 'spirit-breaker', 'storm-spirit', 'sven', 'techies', 'templar-assassin', 'terrorblade', 'tidehunter', 'timbersaw', 'tiny', 'treant-protector', 'troll-warlord', 'tusk', 'underlord', 'undying', 'ursa', 'vengeful-spirit', 'void-spirit', 'venomancer', 'viper', 'visage', 'warlock', 'weaver', 'windranger', 'winter-wyvern', 'witch-doctor', 'wraith-king', 'zeus']
 
         # создание Combobox
         self.combo_box_1 = ttk.Combobox(root, values=self.heroes)
@@ -65,28 +65,49 @@ class DotaPicker:
 
         heroes_list = [hero_01, hero_02, hero_03, hero_04, hero_05]
         known_heroes = list(filter(lambda hero: hero != "", heroes_list))
-
+        
+        if 1 == len(known_heroes):
+            h_1 = what_procent_win_rate(hero_01)
+            print("\nПредложенные герои:")
+            stage_peak(h_1)
+        
         if 2 == len(known_heroes):
             h_1 = what_procent_win_rate(hero_01)
             h_2 = what_procent_win_rate(hero_02)
-            h_all_first = h_1 + h_2
+            h_all = h_1 + h_2
             print("\nПредложенные герои:")
-            stage_peak(h_all_first)
-
-        if len(known_heroes) == 4 or len(known_heroes) == 5:
+            stage_peak(h_all)
+            
+        if 3 == len(known_heroes):
+            h_1 = what_procent_win_rate(hero_01)
+            h_2 = what_procent_win_rate(hero_02)
+            h_3 = what_procent_win_rate(hero_03)
+            h_all = h_1 + h_2 + h_3
+            print("\nПредложенные герои:")
+            stage_peak(h_all)
+                   
+        if 4 == len(known_heroes):
             h_1 = what_procent_win_rate(hero_01)
             h_2 = what_procent_win_rate(hero_02)
             h_3 = what_procent_win_rate(hero_03)
             h_4 = what_procent_win_rate(hero_04)
-
-            if len(known_heroes) == 5:
-                h_5 = what_procent_win_rate(hero_05)
-                h_all_second = h_1 + h_2 + h_3 + h_4 + h_5
-            else:
-                h_all_second = h_1 + h_2 + h_3 + h_4
-
+            h_all = h_1 + h_2 + h_3 + h_4
             print("\nПредложенные герои:")
-            stage_peak(h_all_second)
+            stage_peak(h_all)
+
+        if 5 == len(known_heroes):
+            h_1 = what_procent_win_rate(hero_01)
+            h_2 = what_procent_win_rate(hero_02)
+            h_3 = what_procent_win_rate(hero_03)
+            h_4 = what_procent_win_rate(hero_04)
+            h_5 = what_procent_win_rate(hero_05)
+            h_all = h_1 + h_2 + h_3 + h_4 + h_5
+            print("\nПредложенные герои:")
+            stage_peak(h_all)
+        
+            
+            
+
 
         # добавление текстового поля для вывода результата
         self.result_label = ttk.Label(root, text=f"Выбранные герои: {hero_01}, {hero_02}, {hero_03}, {hero_04}, {hero_05}")
@@ -100,7 +121,7 @@ def stage_peak(h_all):
     avg_win_rate(heroes)
 
 def what_procent_win_rate(hero):
-    link_conn = f"C:/Users/Public/Documents/{hero}.db"
+    link_conn = f"./tables/{hero}.db"
     with sqlite3.connect(link_conn, check_same_thread=False) as conn:
         c = conn.cursor()
         c.execute("SELECT name, win_rate FROM heroes ORDER BY win_rate ASC LIMIT 122")
@@ -115,8 +136,8 @@ def avg_win_rate(heroes):
                 min_win_rates[hero] = float(win_rate[:-1])
         else:
             min_win_rates[hero] = float(win_rate[:-1])
-        print(f"{hero} - {win_rate}")
-        #print(hero)
+        #print(f"{hero} - {(((float(win_rate[:-1]) - 50) * 3 * -1).toFixed(1)}"))
+        print(hero)
         #self.text_area.insert(tk.END, f"{hero} - {win_rate}\n")
 
 if __name__ == "__main__":
